@@ -8,10 +8,8 @@
     shadow-xs shadow-black/20
     backdrop-blur-xl
   ">
-    <!-- Barra principal -->
     <div class="flex items-center justify-between">
 
-        <!-- Logo -->
         <a routerLink="/" class="
         flex items-center
         px-3 py-2
@@ -19,10 +17,9 @@
         transition-colors
         hover:text-white/70
       ">
-            Logo
+            <img src="/images/logo_hito.png" alt="Logo" class="h-8 w-auto object-contain" />
         </a>
 
-        <!-- Navegación desktop -->
         <div class="hidden items-center gap-1 md:flex">
             @for (section of sections(); track section.href) {
             <a [href]="section.href" class="
@@ -39,7 +36,6 @@
             }
         </div>
 
-        <!-- Auth desktop -->
         <div class="hidden items-center gap-2 md:flex">
             <a routerLink="/login" class="
           px-3 py-2
@@ -53,7 +49,6 @@
             <app-button routerLink="/register" variant="primary" label="Prueba gratis" />
         </div>
 
-        <!-- Botón menú mobile -->
         <button type="button" class="
         flex h-10 w-10
         items-center justify-center
@@ -71,7 +66,6 @@
         </button>
     </div>
 
-    <!-- Menú mobile -->
     @if (menuOpen()) {
     <div class="
         mt-2

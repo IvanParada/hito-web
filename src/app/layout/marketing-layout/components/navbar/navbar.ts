@@ -21,7 +21,7 @@ export class MarketingNavbar {
         {
             label: 'Precios',
             href: '#pricing',
-        },
+        }
     ]);
 
     toggleMenu() {
