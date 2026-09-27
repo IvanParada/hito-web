@@ -1,0 +1,62 @@
+@if (routerLink()) {
+  <a
+    [routerLink]="routerLink()"
+    class="
+      inline-flex
+      min-h-10
+      items-center
+      justify-center
+      whitespace-nowrap
+      rounded-lg
+      px-3
+      py-2
+      text-sm
+      font-regular
+      transition-all
+      duration-200
+      active:scale-95
+      sm:px-4
+    "
+    [class.bg-orange-500]="variant() === 'primary'"
+    [class.text-white]="variant() === 'primary'"
+    [class.hover:bg-orange-600]="variant() === 'primary'"
+    [class.border]="variant() === 'secondary'"
+    [class.border-zinc-300]="variant() === 'secondary'"
+    [class.text-zinc-900]="variant() === 'secondary'"
+    [class.hover:bg-zinc-100]="variant() === 'secondary'"
+  >
+    {{ label() }}
+  </a>
+} @else {
+  <button
+    [type]="type()"
+    [disabled]="disabled()"
+    class="
+      inline-flex
+      min-h-10
+      items-center
+      justify-center
+      whitespace-nowrap
+      rounded-lg
+      px-3
+      py-2
+      text-sm
+      font-regular
+      transition-all
+      duration-200
+      active:scale-95
+      disabled:pointer-events-none
+      disabled:opacity-50
+      sm:px-4
+    "
+    [class.bg-orange-500]="variant() === 'primary'"
+    [class.text-white]="variant() === 'primary'"
+    [class.hover:bg-orange-600]="variant() === 'primary'"
+    [class.border]="variant() === 'secondary'"
+    [class.border-zinc-300]="variant() === 'secondary'"
+    [class.text-zinc-900]="variant() === 'secondary'"
+    [class.hover:bg-zinc-100]="variant() === 'secondary'"
+  >
+    {{ label() }}
+  </button>
+}

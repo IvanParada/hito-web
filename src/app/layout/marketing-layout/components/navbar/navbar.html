@@ -1,0 +1,116 @@
+<nav class="
+    fixed left-1/2 top-4 z-50
+    w-[calc(100%-2rem)] max-w-5xl
+    -translate-x-1/2
+    rounded-xl
+    bg-zinc-900/80
+    px-3 py-2
+    shadow-xs shadow-black/20
+    backdrop-blur-xl
+  ">
+    <!-- Barra principal -->
+    <div class="flex items-center justify-between">
+
+        <!-- Logo -->
+        <a routerLink="/" class="
+        flex items-center
+        px-3 py-2
+        text-sm font-semibold text-white
+        transition-colors
+        hover:text-white/70
+      ">
+            Logo
+        </a>
+
+        <!-- Navegación desktop -->
+        <div class="hidden items-center gap-1 md:flex">
+            @for (section of sections(); track section.href) {
+            <a [href]="section.href" class="
+            rounded-lg
+            px-4 py-2
+            text-sm font-medium
+            text-white/60
+            transition-all duration-200
+            hover:bg-white/5
+            hover:text-white
+          ">
+                {{ section.label }}
+            </a>
+            }
+        </div>
+
+        <!-- Auth desktop -->
+        <div class="hidden items-center gap-2 md:flex">
+            <a routerLink="/login" class="
+          px-3 py-2
+          text-sm font-medium text-white/70
+          transition-colors
+          hover:text-white
+        ">
+                Iniciar sesión
+            </a>
+
+            <app-button routerLink="/register" variant="primary" label="Prueba gratis" />
+        </div>
+
+        <!-- Botón menú mobile -->
+        <button type="button" class="
+        flex h-10 w-10
+        items-center justify-center
+        rounded-lg
+        text-white
+        transition-colors
+        hover:bg-white/10
+        md:hidden
+      " [attr.aria-expanded]="menuOpen()" aria-label="Abrir menú" (click)="toggleMenu()">
+            <div class="flex flex-col gap-1.5">
+                <span class="h-0.5 w-5 bg-white"></span>
+                <span class="h-0.5 w-5 bg-white"></span>
+                <span class="h-0.5 w-5 bg-white"></span>
+            </div>
+        </button>
+    </div>
+
+    <!-- Menú mobile -->
+    @if (menuOpen()) {
+    <div class="
+        mt-2
+        flex flex-col
+        border-t border-white/10
+        pt-2
+        md:hidden
+      ">
+        @for (section of sections(); track section.href) {
+        <a [href]="section.href" class="
+            rounded-lg
+            px-3 py-3
+            text-sm font-medium
+            text-white/70
+            transition-colors
+            hover:bg-white/5
+            hover:text-white
+          " (click)="closeMenu()">
+            {{ section.label }}
+        </a>
+        }
+
+        <div class="my-2 h-px bg-white/10"></div>
+
+        <a routerLink="/login" class="
+          rounded-lg
+          px-3 py-3
+          text-sm font-medium
+          text-white/70
+          transition-colors
+          hover:bg-white/5
+          hover:text-white
+        " (click)="closeMenu()">
+            Iniciar sesión
+        </a>
+
+        <div class="mt-2">
+            <app-button routerLink="/register" variant="primary" label="Prueba gratis" />
+        </div>
+    </div>
+    }
+</nav>
