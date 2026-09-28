@@ -7,32 +7,32 @@
     px-3 py-2
     shadow-xs shadow-black/20
     backdrop-blur-xl
-  ">
+  " style="view-transition-name: marketing-navbar;">
     <div class="flex items-center justify-between">
 
-        <a routerLink="/" class="
-        flex items-center
-        px-3 py-2
-        text-sm font-semibold text-white
-        transition-colors
-        hover:text-white/70
-      ">
+        <button type="button" class="
+    flex items-center
+    px-3 py-2
+    text-sm font-semibold text-white
+    transition-colors
+    hover:text-white/70
+  " (click)="scrollToSection('hero')">
             <img src="/images/logo_hito.png" alt="Logo" class="h-8 w-auto object-contain" />
-        </a>
+        </button>
 
         <div class="hidden items-center gap-1 md:flex">
-            @for (section of sections(); track section.href) {
-            <a [href]="section.href" class="
-            rounded-lg
-            px-4 py-2
-            text-sm font-medium
-            text-white/60
-            transition-all duration-200
-            hover:bg-white/5
-            hover:text-white
-          ">
+            @for (section of sections(); track section.id) {
+            <button type="button" class="
+      rounded-lg
+      px-4 py-2
+      text-sm font-medium
+      text-white/60
+      transition-all duration-200
+      hover:bg-white/5
+      hover:text-white
+    " (click)="scrollToSection(section.id)">
                 {{ section.label }}
-            </a>
+            </button>
             }
         </div>
 
@@ -74,18 +74,19 @@
         pt-2
         md:hidden
       ">
-        @for (section of sections(); track section.href) {
-        <a [href]="section.href" class="
-            rounded-lg
-            px-3 py-3
-            text-sm font-medium
-            text-white/70
-            transition-colors
-            hover:bg-white/5
-            hover:text-white
-          " (click)="closeMenu()">
+        @for (section of sections(); track section.id) {
+        <button type="button" class="
+      rounded-lg
+      px-3 py-3
+      text-left
+      text-sm font-medium
+      text-white/70
+      transition-colors
+      hover:bg-white/5
+      hover:text-white
+    " (click)="scrollToSection(section.id); closeMenu()">
             {{ section.label }}
-        </a>
+        </button>
         }
 
         <div class="my-2 h-px bg-white/10"></div>

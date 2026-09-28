@@ -12,17 +12,17 @@ import { Button } from '../../../../shared/components/button/button';
 })
 export class MarketingNavbar {
     readonly menuOpen = signal(false);
-
-    readonly sections = signal([
-        {
-            label: 'Características',
-            href: '#features',
-        },
-        {
-            label: 'Precios',
-            href: '#pricing',
-        }
+    sections = signal([
+        { id: 'features', label: 'Características' },
+        { id: 'pricing', label: 'Precios' },
     ]);
+    scrollToSection(id: string) {
+        document.getElementById(id)?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        });
+    }
+
 
     toggleMenu() {
         this.menuOpen.update(value => !value);

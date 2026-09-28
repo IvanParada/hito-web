@@ -17,7 +17,10 @@
     --color-danger: #dc2626;
 }
 
-html,
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     min-height: 100%;
@@ -27,4 +30,37 @@ body {
     background: var(--color-background);
     color: var(--color-text);
     font-family: Arial, Helvetica, sans-serif;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+}
+
+::view-transition-group(grid-background) {
+    animation-duration: 500ms;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+::view-transition-old(marketing-navbar) {
+    animation: 200ms ease-out both navbar-out;
+}
+
+@keyframes navbar-out {
+    to {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
 }
