@@ -10,12 +10,9 @@ export type ButtonVariant = 'primary' | 'secondary';
 })
 export class Button {
   label = input.required<string>();
-
   variant = input<ButtonVariant>('primary');
-
   routerLink = input<string | null>(null);
-
   type = input<'button' | 'submit'>('button');
-
   disabled = input(false);
+  fullWidth = input(false);
 }

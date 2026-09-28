@@ -1,0 +1,13 @@
+<div class="flex flex-col items-center justify-center w-full max-w-md p-4 mx-auto space-y-8">
+  <h1 class="text-3xl font-bold text-zinc-800">Iniciar sesión</h1>
+  <form [formGroup]="loginForm" class="w-full space-y-6">
+
+    <app-input label="Correo electrónico" type="email" placeholder="nombre@empresa.com" [control]="emailControl"
+      errorMessage="Ingresa un correo electrónico válido" />
+
+    <app-input label="Contraseña" type="password" placeholder="••••••••••" [control]="passwordControl"
+      errorMessage="La contraseña es obligatoria" />
+
+    <app-button label="Iniciar sesión" variant="primary" type="submit" [fullWidth]="true" />
+  </form>
+</div>
