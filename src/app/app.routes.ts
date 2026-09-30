@@ -44,6 +44,11 @@ export const routes: Routes = [
     component: PrivateLayout,
     children: [
       {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+      {
         path: 'dashboard',
         component: Dashboard,
       },
