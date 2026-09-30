@@ -1,5 +1,11 @@
 <div class="p-8">
-  <h1 class="text-3xl font-bold">
-    Projects
-  </h1>
+  <app-page-header [title]="'Proyectos'" [subtitle]="'Gestiona y supervisa tus proyectos.'" />
+   <div class="mt-8 flex flex-row">
+    <div class="flex-1">
+      <app-search-bar [placeholder]="'Buscar proyectos...'"></app-search-bar>
+    </div>
+    <div class="ml-4">
+      <app-button [label]="'Añadir proyecto'"></app-button>
+    </div>
+  </div>
 </div>

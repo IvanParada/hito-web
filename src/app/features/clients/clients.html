@@ -1,5 +1,11 @@
 <div class="p-8">
-  <h1 class="text-3xl font-bold">
-    Clients
-  </h1>
+  <app-page-header [title]="'Clientes'" [subtitle]="'Gestiona tus clientes,  sus detalles y contactos.'" />
+  <div class="mt-8 flex flex-row">
+    <div class="flex-1">
+      <app-search-bar [placeholder]="'Buscar clientes...'"></app-search-bar>
+    </div>
+    <div class="ml-4">
+      <app-button [label]="'Añadir cliente'"></app-button>
+    </div>
+  </div>
 </div>

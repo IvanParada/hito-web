@@ -1,8 +1,25 @@
-<aside class="flex h-screen w-20 flex-col bg-zinc-900 text-white">
+<aside class="
+    fixed bottom-0 left-0 z-50
+    flex h-16 w-full shrink-0 flex-row
+    items-center justify-around
+    bg-zinc-900 px-2 text-white
 
-    <div class="flex flex-col items-center gap-6 pt-6">
+    md:sticky md:top-0
+    md:h-screen md:w-20
+    md:flex-col
+    md:justify-between
+    md:px-0
+  ">
+  <div class="
+      flex w-full
+      items-center justify-around
 
-        <a routerLink="/app/dashboard" routerLinkActive="bg-white/10" [routerLinkActiveOptions]="{ exact: true }" class="
+      md:w-auto
+      md:flex-col
+      md:gap-6
+      md:pt-6
+    ">
+    <a routerLink="/app/dashboard" routerLinkActive="bg-white/10" [routerLinkActiveOptions]="{ exact: true }" class="
         relative
         flex h-10 w-10
         items-center justify-center
@@ -10,19 +27,23 @@
         transition
         hover:bg-white/10
       ">
-            <span class="
+      <span class="
           absolute
-          -left-5
-          h-9 w-[3px]
+          bottom-[-12px]
+          h-[3px] w-8
           rounded-full
           bg-white
           opacity-0
+
+          md:-left-5
+          md:bottom-auto
+          md:h-9 md:w-[3px]
         " routerLinkActive="opacity-100"></span>
 
-            <img src="/icons/dashboard.svg" alt="Dashboard" class="h-5 w-auto object-contain" />
-        </a>
+      <img src="/icons/dashboard.svg" alt="Dashboard" class="h-5 w-auto object-contain" />
+    </a>
 
-        <a routerLink="/app/clients" routerLinkActive="bg-white/10" class="
+    <a routerLink="/app/clients" routerLinkActive="bg-white/10" class="
         relative
         flex h-10 w-10
         items-center justify-center
@@ -30,19 +51,23 @@
         transition
         hover:bg-white/10
       ">
-            <span class="
+      <span class="
           absolute
-          -left-5
-          h-9 w-[3px]
+          bottom-[-12px]
+          h-[3px] w-8
           rounded-full
           bg-white
           opacity-0
+
+          md:-left-5
+          md:bottom-auto
+          md:h-9 md:w-[3px]
         " routerLinkActive="opacity-100"></span>
 
-            <img src="/icons/users.svg" alt="Clients" class="h-5 w-auto object-contain" />
-        </a>
+      <img src="/icons/users.svg" alt="Clients" class="h-5 w-auto" />
+    </a>
 
-        <a routerLink="/app/projects" routerLinkActive="bg-white/10" class="
+    <a routerLink="/app/projects" routerLinkActive="bg-white/10" class="
         relative
         flex h-10 w-10
         items-center justify-center
@@ -50,19 +75,23 @@
         transition
         hover:bg-white/10
       ">
-            <span class="
+      <span class="
           absolute
-          -left-5
-          h-9 w-[3px]
+          bottom-[-12px]
+          h-[3px] w-8
           rounded-full
           bg-white
           opacity-0
+
+          md:-left-5
+          md:bottom-auto
+          md:h-9 md:w-[3px]
         " routerLinkActive="opacity-100"></span>
 
-            <img src="/icons/projects.svg" alt="Projects" class="h-5 w-auto object-contain" />
-        </a>
+      <img src="/icons/projects.svg" alt="Projects" class="h-5 w-auto" />
+    </a>
 
-        <a routerLink="/app/materials" routerLinkActive="bg-white/10" class="
+    <a routerLink="/app/materials" routerLinkActive="bg-white/10" class="
         relative
         flex h-10 w-10
         items-center justify-center
@@ -70,19 +99,23 @@
         transition
         hover:bg-white/10
       ">
-            <span class="
+      <span class="
           absolute
-          -left-5
-          h-9 w-[3px]
+          bottom-[-12px]
+          h-[3px] w-8
           rounded-full
           bg-white
           opacity-0
+
+          md:-left-5
+          md:bottom-auto
+          md:h-9 md:w-[3px]
         " routerLinkActive="opacity-100"></span>
 
-            <img src="/icons/catalog.svg" alt="Materials" class="h-5 w-auto object-contain" />
-        </a>
+      <img src="/icons/catalog.svg" alt="Materials" class="h-5 w-auto" />
+    </a>
 
-        <a routerLink="/app/settings" routerLinkActive="bg-white/10" class="
+    <a routerLink="/app/settings" routerLinkActive="bg-white/10" class="
         relative
         flex h-10 w-10
         items-center justify-center
@@ -90,30 +123,32 @@
         transition
         hover:bg-white/10
       ">
-            <span class="
+      <span class="
           absolute
-          -left-5
-          h-9 w-[3px]
+          bottom-[-12px]
+          h-[3px] w-8
           rounded-full
           bg-white
           opacity-0
+
+          md:-left-5
+          md:bottom-auto
+          md:h-9 md:w-[3px]
         " routerLinkActive="opacity-100"></span>
 
-            <img src="/icons/settings.svg" alt="Settings" class="h-5 w-auto object-contain" />
-        </a>
+      <img src="/icons/settings.svg" alt="Settings" class="h-5 w-auto" />
+    </a>
+  </div>
 
-    </div>
-
-    <div class="mt-auto flex justify-center pb-6">
-        <button type="button" class="
+  <div class="hidden md:flex md:justify-center md:pb-6">
+    <button type="button" class="
         flex h-10 w-10
         items-center justify-center
         rounded-lg
         transition
         hover:bg-white/10
       " (click)="logout()">
-            <img src="/icons/logout.svg" alt="Logout" class="h-5 w-auto object-contain" />
-        </button>
-    </div>
-
+      <img src="/icons/logout.svg" alt="Logout" class="h-5 w-auto" />
+    </button>
+  </div>
 </aside>

@@ -1,5 +1,12 @@
 <div class="p-8">
-  <h1 class="text-3xl font-bold">
-    Materials
-  </h1>
+  <app-page-header [title]="'Materiales'"
+    [subtitle]="'Registra materiales, precios y unidades para tus cotizaciones.'" />
+  <div class="mt-8 flex flex-row">
+    <div class="flex-1">
+      <app-search-bar [placeholder]="'Buscar materiales...'"></app-search-bar>
+    </div>
+    <div class="ml-4">
+      <app-button [label]="'Añadir material'"></app-button>
+    </div>
+  </div>
 </div>
