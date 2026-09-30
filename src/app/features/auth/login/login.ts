@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Input } from '../../../shared/components/input/input';
 import { Button } from '../../../shared/components/button/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,10 @@ import { Button } from '../../../shared/components/button/button';
   templateUrl: './login.html',
 })
 export class Login {
+
+  private router = inject(Router);
+
+
   loginForm = new FormGroup({
     email: new FormControl('', {
       nonNullable: true,
@@ -34,4 +39,14 @@ export class Login {
 
   emailControl = this.loginForm.controls.email;
   passwordControl = this.loginForm.controls.password;
+
+  onSubmit() {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      return;
+    }
+
+    // Provisorio hasta integrar el backend
+    this.router.navigate(['/app/dashboard']);
+  }
 }

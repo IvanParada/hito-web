@@ -24,9 +24,6 @@ html {
 body {
     margin: 0;
     min-height: 100%;
-}
-
-body {
     background: var(--color-background);
     color: var(--color-text);
     font-family: Arial, Helvetica, sans-serif;
@@ -62,5 +59,37 @@ body {
     to {
         opacity: 0;
         transform: translateY(-8px);
+    }
+}
+
+::view-transition-group(private-content) {
+    animation-duration: 220ms;
+    animation-timing-function: ease;
+}
+
+::view-transition-old(private-content) {
+    animation: 180ms ease both private-out;
+}
+
+::view-transition-new(private-content) {
+    animation: 220ms ease both private-in;
+}
+
+@keyframes private-out {
+    to {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+}
+
+@keyframes private-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
