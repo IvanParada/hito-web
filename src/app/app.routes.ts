@@ -12,6 +12,7 @@ import { Settings } from './features/settings/settings';
 import { Projects } from './features/projects/projects';
 import { Materials } from './features/materials/materials';
 import { Clients } from './features/clients/clients';
+import { authGuard } from './core/auth/guards/auth.guards';
 
 export const routes: Routes = [
   {
@@ -41,6 +42,7 @@ export const routes: Routes = [
   },
   {
     path: 'app',
+    canActivate: [authGuard],
     component: PrivateLayout,
     children: [
       {
