@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -8,6 +8,11 @@ import {
 import { Input } from '../../../shared/components/input/input';
 import { Button } from '../../../shared/components/button/button';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../core/auth/service/auth.service';
+import { LoginDto } from '../../../core/auth/dto/login.dto';
+import { SessionStore } from '../../../core/auth/store/session.store';
+import { finalize, switchMap, tap } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -17,10 +22,15 @@ import { Router } from '@angular/router';
 })
 export class Login {
 
-  private router = inject(Router);
+  private readonly router = inject(Router);
+  private readonly authService = inject(AuthService);
+  private readonly sessionStore = inject(SessionStore);
+
+  readonly isLoading = signal(false);
+  readonly errorMessage = signal<string | null>(null);
 
 
-  loginForm = new FormGroup({
+  readonly loginForm = new FormGroup({
     email: new FormControl('', {
       nonNullable: true,
       validators: [
@@ -37,16 +47,62 @@ export class Login {
     }),
   });
 
-  emailControl = this.loginForm.controls.email;
-  passwordControl = this.loginForm.controls.password;
+  readonly emailControl = this.loginForm.controls.email;
+  readonly passwordControl = this.loginForm.controls.password;
 
   onSubmit() {
-    if (this.loginForm.invalid) {
+    if (this.loginForm.invalid || this.isLoading()) {
       this.loginForm.markAllAsTouched();
       return;
     }
 
-    // Provisorio hasta integrar el backend
-    this.router.navigate(['/app/dashboard']);
+    this.isLoading.set(true);
+    this.errorMessage.set(null);
+
+    const formValue = this.loginForm.getRawValue();
+
+    const dto: LoginDto = {
+      email: formValue.email.trim(),
+      password: formValue.password,
+    };
+
+    this.authService
+      .login(dto)
+      .pipe(
+        tap((response) => {
+          this.sessionStore.setSession(response);
+        }),
+
+        switchMap(() => {
+          return this.authService.me();
+        }),
+
+        tap((me) => {
+          this.sessionStore.setCurrentUser(me);
+        }),
+
+        finalize(() => {
+          this.isLoading.set(false);
+        }),
+      )
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/app/dashboard']);
+        },
+
+        error: (error: HttpErrorResponse) => {
+          if (error.status === 401) {
+            this.errorMessage.set(
+              'Correo o contraseña incorrectos',
+            );
+            return;
+          }
+
+          this.errorMessage.set(
+            'No fue posible iniciar sesión. Intenta nuevamente.',
+          );
+        },
+      });
   }
+
 }

@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { PageHeader } from '../../shared/components/page-header/page-header';
-import { SearchBar } from '../../shared/components/search-bar/search-bar';
-import { Button } from '../../shared/components/button/button';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [PageHeader, SearchBar, Button],
+  imports: [PageHeader],
   templateUrl: './dashboard.html'
 })
 export class Dashboard {}

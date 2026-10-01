@@ -8,6 +8,6 @@
     <app-input label="Contraseña" type="password" placeholder="••••••••••" [control]="passwordControl"
       errorMessage="La contraseña es obligatoria" />
 
-    <app-button label="Iniciar sesión" variant="primary" type="submit" [fullWidth]="true" />
+    <app-button label="Iniciar sesión" variant="primary" type="submit" [fullWidth]="true" [disabled]="isLoading()" />
   </form>
 </div>
