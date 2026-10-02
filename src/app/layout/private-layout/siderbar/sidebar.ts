@@ -4,6 +4,7 @@ import {
   RouterLink,
   RouterLinkActive
 } from '@angular/router';
+import { SessionService } from '../../../core/auth/service/session.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,11 +16,13 @@ import {
   templateUrl: './sidebar.html',
 })
 export class Sidebar {
-  private router = inject(Router);
+  private readonly router = inject(Router);
+  private readonly sessionService = inject(SessionService);
 
 
-  logout() {
-    this.router.navigate(['']);
-
-  }
+onLogout(): void {
+  this.sessionService.logout().subscribe(() => {
+    this.router.navigate(['/']);
+  });
+}
 }

@@ -31,4 +31,26 @@ export class SessionService {
       }),
     );
   }
+
+  logout() {
+    const refreshToken = this.sessionStore.refreshToken();
+
+    if (!refreshToken) {
+      this.sessionStore.clearSession();
+      return of(false);
+    }
+
+    return this.authService.logout({ refreshToken }).pipe(
+      tap(() => {
+        this.sessionStore.clearSession();
+      }),
+
+      map(() => true),
+
+      catchError(() => {
+        this.sessionStore.clearSession();
+        return of(false);
+      }),
+    );
+  }
 }

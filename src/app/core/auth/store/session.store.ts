@@ -35,6 +35,17 @@ export class SessionStore {
     this.currentUser.set(user);
   }
 
+  setTokens(
+    accessToken: string,
+    refreshToken: string,
+  ): void {
+    this.accessToken.set(accessToken);
+    this.refreshToken.set(refreshToken);
+
+    sessionStorage.setItem('accessToken', accessToken);
+    sessionStorage.setItem('refreshToken', refreshToken);
+  }
+
   clearSession(): void {
     this.currentUser.set(null);
     this.accessToken.set(null);
