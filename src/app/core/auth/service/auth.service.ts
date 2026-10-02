@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../../environments/environment";
 import { MeResponse } from "../dto/me.dto";
 import { RefreshTokenResponse, TokenDto } from "../dto/refresh.dto";
+import { RegisterDto, RegisterResponse } from "../dto/register.dto";
 
 @Injectable({
     providedIn: 'root'
@@ -11,6 +12,13 @@ import { RefreshTokenResponse, TokenDto } from "../dto/refresh.dto";
 export class AuthService {
     private readonly http = inject(HttpClient);
     private readonly apiUrl = `${environment.apiUrl}/auth`;
+
+    register(dto: RegisterDto) {
+        return this.http.post<RegisterResponse>(
+            `${this.apiUrl}/register`,
+            dto,
+        );
+    }
 
     login(dto: LoginDto) {
         return this.http.post<LoginResponse>(
